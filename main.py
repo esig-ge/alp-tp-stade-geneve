@@ -39,6 +39,17 @@ def affiche_categ():
     print('votre categorie est: {}'.format(categorie))
 
 
+def reptemps():
+    for i in range(100,161):
+        temps = i/10
+        categorie = '?'
+        if temps <= 15.0:
+            categorie = 'FEMME 1'
+        else:
+            categorie = 'FEMME 2'
+        print("{} --> {}".format(temps, categorie))
+
+
 if __name__ == '__main__':
     nom_groupe = "Stade Genève - adultes I"
     annee_en_cours = 2020
@@ -55,10 +66,13 @@ if __name__ == '__main__':
 
     # exercice2 (appel)
     en_tete_mieux(4, "ALP")
-    en_tete_mieux(10, "Thomas Servettaz")
-    en_tete_mieux(1, "ESIG")
+    #en_tete_mieux(10, "Thomas Servettaz")
+    #en_tete_mieux(1, "ESIG")
 
     #exercice 3
-    affiche_categ()
-    affiche_categ()
-    affiche_categ()
+    #affiche_categ()
+    #affiche_categ()
+    #affiche_categ()
+
+    #exercice 4
+    reptemps()
