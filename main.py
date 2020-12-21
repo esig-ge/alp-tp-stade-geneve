@@ -38,6 +38,25 @@ def affiche_categ():
 
     print('votre categorie est: {}'.format(categorie))
 
+def trouve_categorie(age, genre, temps):
+    categorie = '?'
+    if genre == 'f':
+        if age < 18:
+            categorie = 'FEMME J'
+        elif temps <= 15.0:
+            categorie = 'FEMME 1'
+        else:
+            categorie = 'FEMME 2'
+    elif genre == 'h':
+        if age < 18:
+            categorie = 'HOMME J'
+        elif temps < 14.5:
+            categorie = 'HOMME 1'
+        elif temps <= 16.0:
+            categorie = 'HOMME 2'
+        else:
+            categorie = 'HOMME 3'
+    return categorie
 
 def reptemps():
     for i in range(100,161):
@@ -48,6 +67,48 @@ def reptemps():
         else:
             categorie = 'FEMME 2'
         print("{} --> {}".format(temps, categorie))
+
+def reptemps_mieux_1(de , a):
+    for i in range(int(de*10),int(a*10)+1):
+        temps = i/10
+        categorie = '?'
+        if temps <= 15.0:
+            categorie = 'FEMME 1'
+        else:
+            categorie = 'FEMME 2'
+        print("{} --> {}".format(temps, categorie))
+
+def reptemps_mieux_2(de , a, age, genre):
+    for i in range(int(de*10),int(a*10)+1):
+        temps = i/10
+        print("{} --> {}".format(temps, trouve_categorie(age, genre, temps)))
+
+
+def afficher_noms(names):
+    for n in names:
+        print(n)
+
+    #équivalent à
+    #for i in range(0,len(names)):
+    #    print(names[i])
+
+    #équivalent à
+    #i=0
+    #while i < len(names):
+    #    print(names[i])
+    #    i += 1
+
+
+def affiche_un_athlete(name, age, is_male):
+    homme_ou_femme = 'femme'
+    if is_male:
+        homme_ou_femme = 'homme'
+    print('{} - {} - {} ans'.format(name, homme_ou_femme, age))
+
+
+def afficher_athletes(names, ages, is_male):
+    for i in range(0,len(names)):
+        affiche_un_athlete(names[i], ages[i], is_male[i])
 
 
 if __name__ == '__main__':
@@ -75,4 +136,15 @@ if __name__ == '__main__':
     #affiche_categ()
 
     #exercice 4
-    reptemps()
+    #reptemps()
+
+    #exercice 5
+    #reptemps_mieux_1(8,16.5)
+    #print(' *** ')
+    #reptemps_mieux_2(9.5,15.8,25,'f')
+
+    #exercice 6
+    #afficher_noms(names)
+
+    #exercice 7
+    afficher_athletes(names, ages, is_male)
