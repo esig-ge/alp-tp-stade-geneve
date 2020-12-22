@@ -111,6 +111,24 @@ def afficher_athletes(names, ages, is_male):
         affiche_un_athlete(names[i], ages[i], is_male[i])
 
 
+def athletes_moins_de(names, ages, age_plafond):
+    sl = []
+    for i in range(0,len(names)):
+        if ages[i] < age_plafond:
+            sl.append(names[i])
+    return sl
+
+
+def qualifies(temps_manche, names, is_male, temps_min_hommes, temps_min_femmes):
+    qualifies = []
+    for i in range(len(temps_manche)):
+        if is_male[i] and temps_manche[i] <= temps_min_hommes:
+            qualifies.append(names[i])
+        elif not is_male[i] and temps_manche[i] <= temps_min_femmes:
+            qualifies.append(names[i])
+    return qualifies
+
+
 if __name__ == '__main__':
     nom_groupe = "Stade Genève - adultes I"
     annee_en_cours = 2020
@@ -147,4 +165,16 @@ if __name__ == '__main__':
     #afficher_noms(names)
 
     #exercice 7
-    afficher_athletes(names, ages, is_male)
+    #afficher_athletes(names, ages, is_male)
+
+    #exercice 8
+    #print('Voici la liste des athletes de moins de 30 ans:')
+    #a_m_30 = athletes_moins_de(names,ages,30)
+    #for nom in a_m_30 # on pourrait (devrait) écrire for nom in athletes_moins_de(names,ages,30): ... et se passer de la variable a_m_30
+    #    print(nom)
+
+    #exercice 9
+    qualifies_manche_1 = qualifies(chrono_manche_1, names, is_male, 13.5, 14.0)
+    print('Voici la liste des athletes qualifiés pour la manche 1:')
+    for nom in qualifies_manche_1: # on pourrait (devrait) écrire for nom in qualifies(chrono_manche_1, names, is_male, 13.5, 14.0): ... et se passer de la variable qualifies_manche_1
+        print(nom)
